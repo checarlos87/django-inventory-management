@@ -2,17 +2,18 @@
 A deliberately simple Django app for managing inventory at an IT enterprise. This app produces straight-forward HTML with very simple CSS.  It is meant to be plugged in to Django's admin or similar backend database management app.
 
 ## Installing
-1. Clone the repo into a Django project.
+Clone the repo into a Django project.
+
 ```
 git clone https://github.com/checarlos87/django-inventory-management.git
 ```
 
-2. Rename the cloned directory as "inventory".
+Rename the cloned directory as "inventory".
 ```
 mv django-inventory-management inventory
 ```
 
-3. Add the app to your project's INSTALLED_APPS (in settings.py).
+Add the app to your project's INSTALLED_APPS (in settings.py).
 ```
 INSTALLED_APPS = [ 
     'inventory.apps.InventoryConfig',
@@ -20,13 +21,13 @@ INSTALLED_APPS = [
 ]
 ```
 
-4. Migrate the app's models.
+Migrate the app's models.
 ```
 python manage.py makemigrations inventory
 python manage.py migrate
 ```
 
-5. (optional) If you're going to run the code in production (not in Django's development server), you'll want to make sure you've created a static/ directory to hold static files (stylesheets, in the case of this app) and then you'll want to collect those static files into the static/ directory using manage.py.
+(optional) If you're going to run the code in production (not in Django's development server), you'll want to make sure you've created a static/ directory to hold static files (stylesheets, in the case of this app) and then you'll want to collect those static files into the static/ directory using manage.py.
 ```
 python manage.py collectstatic
 ```
