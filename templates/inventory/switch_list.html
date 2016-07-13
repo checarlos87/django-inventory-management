@@ -1,0 +1,15 @@
+{% extends "inventory/base_switch_list.html" %}
+
+{% block subtitle %} | Switches{% endblock %}
+
+{% block table-name %}Switches{% endblock %}
+
+{% block table-stats %}
+
+    <ul id="stats">
+        <li>This app currently has <strong>{{ switch_list|length }}</strong> total switches.</li>
+        <li><strong>{{ eth_count }}</strong> of those are Ethernet switches.</li>
+        <li><strong>{{ ib_count }}</strong> of those are Infiniband switches.</li>
+    </ul>
+
+{% endblock %}

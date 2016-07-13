@@ -1,0 +1,18 @@
+{% extends "inventory/base_website_list.html" %}
+
+{% block subtitle %} | Websites{% endblock %}
+
+{% block table-name %}Websites{% endblock %}
+
+{% block table-description %}
+    <p class="table-descript">
+        This table keeps record of the hosted websites and the machines that host them.
+    </p>
+{% endblock %}
+
+{% block table-stats %}
+    <ul id="stats">
+        <li>This app currently hosts <strong>{{ website_list|length }}</strong> websites.</li>
+    </ul>
+{% endblock %}
+

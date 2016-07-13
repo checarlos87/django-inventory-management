@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'inventory/style.css' %}" /> 
+    {% block head-block %}{% endblock %}
+</head>
+
+    <title>Inventory App{% block subtitle %}{% endblock %}</title>
+
+<body>
+    <header>
+        <div id="header-wrapper">
+            <a id="home-link" href={% url "inventory:index" %}>Inventory</a>
+            <form id="main-nav" action="/inventory/load-table", method="post">
+            {% csrf_token %}
+                <select name="db-table">
+                    <option value="host">All Hosts</option>
+                    <option value="bacula-cloud">Bacula Members</option>
+                    <option value="jbod">JBODs</option>
+                    <option value="misc">Misc Equipment</option>
+                    <option value="pc">PCs</option>
+                    <option value="physhost">Physical Hosts</option>
+                    <option value="vmhost">VM Hosts</option>
+                    <option value="switch">Switches</option>
+                    <option value="website">Websites</option>
+                </select>
+                <input type=submit value="Go" />
+            </form>
+        </div>
+    </header>
+
+    <div id="content">
+
+        {% block content %}{% endblock %}
+
+    </div>
+
+    <footer>
+        <div id="troglodiv">
+            <p>
+                Built with Django and vim.
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

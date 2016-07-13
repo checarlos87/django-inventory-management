@@ -1,0 +1,38 @@
+{% extends "inventory/base_detail.html" %}
+
+{% block subtitle %} | Details | {{ pc.name }}{% endblock %}
+{% block host-name %}{{ pc.name }}{% endblock %}
+
+{% block details %}
+    <div id="detail-descript">
+        <h3>Description</h3>
+        <p class="table-descript">
+            {{ pc.description }}
+        </p>
+    </div>
+    <table class="results">
+        <thead>
+            <tr>
+                <th colspan="2">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Property Number:</strong></td> 
+                <td>{{ pc.property_num }}</td>
+            </tr>
+            <tr>
+                <td><strong>Building:</strong></td> 
+                <td>{{ pc.building }}</td>
+            </tr>
+            <tr>
+                <td><strong>Custodial:</strong></td> 
+                <td><a href="{% url 'inventory:employee_details' pc.custodial.id %}">{{ pc.custodial }}</a></td>
+            </tr>
+            <tr>
+                <td><strong>PC Model:</strong></td> 
+                <td>{{ pc.get_pc_model }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

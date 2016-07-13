@@ -1,0 +1,23 @@
+{% extends "inventory/base_detail.html" %}
+
+{% block subtitle %} | Details | {{ employee }}{% endblock %}
+{% block host-name %}{{ employee }}{% endblock %}
+
+{% block details %}
+    <table class="results">
+        <thead>
+            <tr>
+                <th colspan="2">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Email:</strong></td> 
+                <td>{{ employee.email }}</td>
+            </tr>
+            <tr>
+                <td><strong>Extension:</strong></td> 
+                <td>{{ employee.ext }}</td>
+            </tr>
+    </table>
+{% endblock %}

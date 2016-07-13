@@ -1,0 +1,34 @@
+{% extends "inventory/base.html" %}
+{% load staticfiles %}
+
+{% block head-block %}
+    <link rel="stylesheet" type="text/css" href={% static 'inventory/results_style.css' %} />
+{% endblock %}
+
+{% block content %}
+    <h2 id="page-title">{% block table-name %}{% endblock %}</h2>
+    {% block table-description %}{% endblock %}
+    {% if member_list %}
+        {% block table-stats %}{% endblock %}
+        <table class="results">
+            <thead>
+                <tr>
+                    <th>Member</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for member in member_list %}
+                <tr>
+                    <td><a href="{% url 'inventory:load_host_details' member.member.id %}">
+                        {{ member.get_member_name }}
+                    </a></td>
+                    <td>{{ member.get_role_display }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p id="no-results">No members were found in inventory.</p>
+    {% endif %}
+{% endblock %}

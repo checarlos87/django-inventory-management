@@ -1,0 +1,16 @@
+#detail-descript {
+    border-top: 1px solid #33ab63; 
+    float: left;
+    width: 50%;
+}
+
+.detail-ul {
+    float: left;
+    line-height: 150%;
+    padding-left: 40px;
+}
+
+#detail-descript p {
+    text-align: justify;
+}
+

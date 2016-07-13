@@ -1,0 +1,81 @@
+{% extends "inventory/base_detail.html" %}
+
+{% block subtitle %} | Details | {{ physhost.name }}{% endblock %}
+{% block host-name %}{{ physhost.name }}{% endblock %}
+
+{% block details %}
+    <div id="detail-descript">
+        <h3>Description</h3>
+        <p class="table-descript">
+            {{ physhost.description }}
+        </p>
+    </div>
+    {% if physhost.services.all %}
+    <div class="detail-ul">
+        <h3>Services</h3>
+        <ul>
+             {% for service in physhost.services.all %}
+             <li>{{ service }}</li>
+             {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    <div class="detail-ul">
+        <h3>Bacula-FD</h3>
+        <ul>
+            <li class="bool-{{ physhost.is_bacula_fd|lower }}">{{ physhost.is_bacula_fd }}</li>
+        </ul>
+    </div>
+    <div class="detail-ul">
+        <h3>Ansible</h3>
+        <ul>
+            <li class="bool-{{ physhost.is_ansible_managed|lower }}">{{ physhost.is_ansible_managed }}</li>
+        </ul>
+    </div>
+    <table class="results">
+        <thead>
+            <tr>
+                <th colspan="2">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Property Number:</strong></td> 
+                <td>{{ physhost.property_num }}</td>
+            </tr>
+            <tr>
+                <td><strong>Building:</strong></td> 
+                <td>{{ physhost.building }}</td>
+            </tr>
+            <tr>
+                <td><strong>Public IP:</strong></td> 
+                <td>{{ physhost.get_netiface_ip }}</td>
+            </tr>
+            <tr>
+                <td><strong>Computer Model:</strong></td> 
+                <td>{{ physhost.get_computer_model }}</td>
+            </tr>
+            <tr>
+                <td><strong>OS:</strong></td> 
+                <td>{{ physhost.os }}</td>
+            </tr>
+            {% if physhost.rack %}
+            <tr>
+                <td><strong>Rack:</strong></td> 
+                <td>{{ physhost.rack }}</td>
+            </tr>
+                {% if physhost.bay_from and physhost.bay_to %}
+                <tr>
+                    {% if physhost.bay_from < physhost.bay_to %}
+                        <td><strong>Bays:</strong></td> 
+                        <td>{{ physhost.bay_from }} - {{ physhost.bay_to }}</td>
+                    {% else %}
+                        <td><strong>Bay:</strong></td> 
+                        <td>{{ physhost.bay_from }}</td>
+                    {% endif %}
+                </tr>
+                {% endif %}
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

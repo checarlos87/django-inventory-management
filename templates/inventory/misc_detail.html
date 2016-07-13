@@ -1,0 +1,36 @@
+{% extends "inventory/base_detail.html" %}
+
+{% block subtitle %} | Details | {{ misc.name }}{% endblock %}
+{% block host-name %}{{ misc.name }}{% endblock %}
+
+{% block details %}
+    <div id="detail-descript">
+        <h3>Description</h3>
+        <p class="table-descript">
+            {{ misc.description }}
+        </p>
+    </div>
+    <div class="detail-ul">
+        <h3>Equipment Type</h3>
+        <ul>
+            <li>{{ misc.equip_type.misc_type }}</li>
+        </ul>
+    </div>
+    <table class="results">
+        <thead>
+            <tr>
+                <th colspan="2">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Property Number:</strong></td> 
+                <td>{{ misc.property_num }}</td>
+            </tr>
+            <tr>
+                <td><strong>Building:</strong></td> 
+                <td>{{ misc.building }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

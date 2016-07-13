@@ -1,0 +1,59 @@
+{% extends "inventory/base_detail.html" %}
+
+{% block subtitle %} | Details | {{ jbod.name }}{% endblock %}
+{% block host-name %}{{ jbod.name }}{% endblock %}
+
+{% block details %}
+    <div id="detail-descript">
+        <h3>Description</h3>
+        <p class="table-descript">
+            {{ jbod.description }}
+        </p>
+    </div>
+    <div class="detail-ul">
+        <h3>Managers</h3>
+        <ul>
+             {% for manager in jbod.managers.all %}
+             <li><a href="{% url 'inventory:physhost_details' manager.id %}">{{ manager }}</a></li>
+             {% endfor %}
+        </ul>
+    </div>
+    <table class="results">
+        <thead>
+            <tr>
+                <th colspan="2">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Property Number:</strong></td> 
+                <td>{{ jbod.property_num }}</td>
+            </tr>
+            <tr>
+                <td><strong>Building:</strong></td> 
+                <td>{{ jbod.building }}</td>
+            </tr>
+            <tr>
+                <td><strong>JBOD Model:</strong></td> 
+                <td>{{ jbod.get_jbod_model }}</td>
+            </tr>
+            {% if jbod.rack %}
+            <tr>
+                <td><strong>Rack:</strong></td> 
+                <td>{{ jbod.rack }}</td>
+            </tr>
+                {% if jbod.bay_from and jbod.bay_to %}
+                <tr>
+                    {% if jbod.bay_from < jbod.bay_to %}
+                        <td><strong>Bays:</strong></td> 
+                        <td>{{ jbod.bay_from }} - {{ jbod.bay_to }}</td>
+                    {% else %}
+                        <td><strong>Bay:</strong></td> 
+                        <td>{{ jbod.bay_from }}</td>
+                    {% endif %}
+                </tr>
+                {% endif %}
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

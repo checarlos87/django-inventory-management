@@ -1,0 +1,36 @@
+{% extends "inventory/base.html" %}
+{% load staticfiles %}
+
+{% block head-block %}
+    <link rel="stylesheet" type="text/css" href={% static 'inventory/results_style.css' %} />
+{% endblock %}
+
+{% block content %}
+    <h2 id="page-title">{% block table-name %}{% endblock %}</h2>
+    {% block table-description %}{% endblock %}
+    {% if pc_list %}
+        {% block table-stats %}{% endblock %}
+        <table class="results">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Prop num</th>
+                    <th>Model</th>
+                    <th>Custodial</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for pc in pc_list %}
+                <tr>
+                    <td><a href="{% url 'inventory:pc_details' pc.id %}">{{ pc.name }}</a></td>
+                    <td>{{ pc.property_num }}</td>
+                    <td>{{ pc.get_pc_model }}</td>
+                    <td><a href="{% url 'inventory:employee_details' pc.custodial.id %}">{{ pc.custodial }}</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p id="no-results">No PCs were found in inventory.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "inventory/base_member_list.html" %}
+
+{% block subtitle %} | Bacula Members{% endblock %}
+
+{% block table-name %}Bacula Members{% endblock %}
+
+{% block table-description %}
+    <p class="table-descript">
+        This table keeps record of which hosts are part of Bacula's infrastructure. Bacula clients are not recorded here; only directors and storage daemons.
+    </p>
+{% endblock %}
+
+{% block table-stats %}
+    <ul id="stats">
+        <li>This app currently has <strong>{{ member_list|length }}</strong> Bacula hosts.</li>
+        <li><strong>{{ dir_count }}</strong> of those are directors.</li>
+        <li><strong>{{ sd_count }}</strong> of those are storage daemons.</li>
+    </ul>
+{% endblock %}
+

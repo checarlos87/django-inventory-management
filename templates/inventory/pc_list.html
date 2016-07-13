@@ -1,0 +1,21 @@
+{% extends "inventory/base_pc_list.html" %}
+
+{% block subtitle %} | PCs{% endblock %}
+
+{% block table-name %}PCs{% endblock %}
+
+{% block table-description %}
+    <p class="table-descript">
+        This table records personal computers. These PCs may be either desktop worksations or laptop PCs.
+        In the case that these PCs are assigned to an employee, he or she will be displayed under the "Custodial" field.
+    </p>
+{% endblock %}
+
+{% block table-stats %}
+
+    <ul id="stats">
+        <li>This app currently has <strong>{{ pc_list|length }}</strong> total PCs.</li>
+        <li><strong>{{ assigned_count }}</strong> of those are assigned to employees.</li>
+    </ul>
+
+{% endblock %}

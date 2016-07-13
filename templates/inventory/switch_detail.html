@@ -1,0 +1,65 @@
+{% extends "inventory/base_detail.html" %}
+
+{% block subtitle %} | Details | {{ switch.name }}{% endblock %}
+{% block host-name %}{{ switch.name }}{% endblock %}
+
+{% block details %}
+    <div id="detail-descript">
+        <h3>Description</h3>
+        <p class="table-descript">
+            {{ switch.description }}
+        </p>
+    </div>
+    <div class="detail-ul">
+        <h3>Switch Type</h3>
+        <ul>
+            <li>{{ switch.get_switch_type_display }}</li>
+        </ul>
+    </div>
+    <table class="results">
+        <thead>
+            <tr>
+                <th colspan="2">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Property Number:</strong></td> 
+                <td>{{ switch.property_num }}</td>
+            </tr>
+            <tr>
+                <td><strong>Building:</strong></td> 
+                <td>{{ switch.building }}</td>
+            </tr>
+            <tr>
+                <td><strong>Public IP:</strong></td> 
+                <td>{{ switch.ip }}</td>
+            </tr>
+            <tr>
+                <td><strong>Switch Model:</strong></td> 
+                <td>{{ switch.get_switch_model }}</td>
+            </tr>
+            <tr>
+                <td><strong>OS:</strong></td> 
+                <td>{{ switch.os }}</td>
+            </tr>
+            {% if switch.rack %}
+            <tr>
+                <td><strong>Rack:</strong></td> 
+                <td>{{ switch.rack }}</td>
+            </tr>
+                {% if switch.bay_from and switch.bay_to %}
+                <tr>
+                    {% if switch.bay_from < switch.bay_to %}
+                        <td><strong>Bays:</strong></td> 
+                        <td>{{ switch.bay_from }} - {{ switch.bay_to }}</td>
+                    {% else %}
+                        <td><strong>Bay:</strong></td> 
+                        <td>{{ switch.bay_from }}</td>
+                    {% endif %}
+                </tr>
+                {% endif %}
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

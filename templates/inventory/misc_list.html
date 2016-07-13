@@ -1,0 +1,18 @@
+{% extends "inventory/base_misc_list.html" %}
+
+{% block subtitle %} | Misc Equipment{% endblock %}
+
+{% block table-name %}Miscellaneous Equipment{% endblock %}
+
+{% block table-description %}
+    <p class="table-descript">
+        This table keeps record of all pieces of equipment that do not merit a table of their own.
+    </p>
+{% endblock %}
+
+{% block table-stats %}
+    <ul id="stats">
+        <li>This app currently has <strong>{{ misc_list|length }}</strong> miscellaneous pieces of equipment.</li>
+    </ul>
+{% endblock %}
+

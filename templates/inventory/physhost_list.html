@@ -1,0 +1,23 @@
+{% extends "inventory/base_host_list.html" %}
+
+{% block subtitle %} | Physical Hosts{% endblock %}
+
+{% block table-name %}Physical Hosts{% endblock %}
+
+{% block table-stats %}
+
+    <ul id="stats">
+        <li>This app currently has <strong>{{ host_list|length }}</strong> total hosts.</li>
+        <li><strong>{{ bacula_fd_count }}</strong> of those hosts are being backed up.</li>
+        <li><strong>{{ ansible_managed_count }}</strong> of those hosts are under Ansible.</li>
+    </ul>
+
+{% endblock %}
+
+{% block extra-th %}
+    <th>Model</th>
+{% endblock %}
+
+{% block extra-td %}
+    <td>{{ host.get_computer_model }}</td>
+{% endblock %}

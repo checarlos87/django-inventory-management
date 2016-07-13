@@ -1,0 +1,34 @@
+{% extends "inventory/base.html" %}
+{% load staticfiles %}
+
+{% block head-block %}
+    <link rel="stylesheet" type="text/css" href={% static 'inventory/results_style.css' %} />
+{% endblock %}
+
+{% block content %}
+    <h2 id="page-title">{% block table-name %}{% endblock %}</h2>
+    {% block table-description %}{% endblock %}
+    {% if misc_list %}
+        {% block table-stats %}{% endblock %}
+        <table class="results">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Prop num</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for misc in misc_list %}
+                <tr>
+                    <td><a href="{% url 'inventory:misc_details' misc.id %}">{{ misc.name }}</a></td>
+                    <td>{{ misc.property_num }}</td>
+                    <td>{{ misc.equip_type }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p id="no-results">No members were found in inventory.</p>
+    {% endif %}
+{% endblock %}

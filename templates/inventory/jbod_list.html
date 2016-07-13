@@ -1,0 +1,13 @@
+{% extends "inventory/base_jbod_list.html" %}
+
+{% block subtitle %} | JBODs{% endblock %}
+
+{% block table-name %}JBODs{% endblock %}
+
+{% block table-stats %}
+
+    <ul id="stats">
+        <li>This app currently has <strong>{{ jbod_list|length }}</strong> total JBODs.</li>
+    </ul>
+
+{% endblock %}

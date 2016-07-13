@@ -1,0 +1,19 @@
+{% extends "inventory/base.html" %}
+{% load staticfiles %}
+
+{% block head-block %}
+    <link rel="stylesheet" type="text/css" href="{% static 'inventory/index_style.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div id="index-div">
+    <h1>Inventory App</h1>
+    <p>Instruction Manual:
+        <ul>
+            <li>Use the drop down menu in top-right corner to navigate to the table you want.</li>
+            <li>Click on available links to view more details about an item.</li>
+            <li>Enjoy.</li>
+        </ul>
+    </p>
+</div>
+{% endblock %}

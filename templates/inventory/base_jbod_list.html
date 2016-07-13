@@ -1,0 +1,39 @@
+{% extends "inventory/base.html" %}
+{% load staticfiles %}
+
+{% block head-block %}
+    <link rel="stylesheet" type="text/css" href={% static 'inventory/results_style.css' %} />
+{% endblock %}
+
+{% block content %}
+    <h2 id="page-title">{% block table-name %}{% endblock %}</h2>
+    {% if jbod_list %}
+        {% block table-stats %}{% endblock %}
+        <table class="results">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Prop num</th>
+                    <th>Managers</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for jbod in jbod_list %}
+                <tr>
+                    <td><a href="{% url 'inventory:jbod_details' jbod.id %}">{{ jbod.name }}</a></td>
+                    <td>{{ jbod.property_num }}</td>
+                    {% if jbod.managers.all|length > 1 %}
+                        <td>Various</td>
+                    {% else %}
+                        <td><a href="{% url 'inventory:load_host_details' jbod.managers.all.0.id %}">
+                            {{ jbod.managers.all.0.name }}
+                        </td></a>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p id="no-results">No JBODs were found in inventory.</p>
+    {% endif %}
+{% endblock %}

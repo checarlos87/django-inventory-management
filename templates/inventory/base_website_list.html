@@ -1,0 +1,32 @@
+{% extends "inventory/base.html" %}
+{% load staticfiles %}
+
+{% block head-block %}
+    <link rel="stylesheet" type="text/css" href={% static 'inventory/results_style.css' %} />
+{% endblock %}
+
+{% block content %}
+    <h2 id="page-title">{% block table-name %}{% endblock %}</h2>
+    {% block table-description %}{% endblock %}
+    {% if website_list %}
+        {% block table-stats %}{% endblock %}
+        <table class="results">
+            <thead>
+                <tr>
+                    <th>FQDN</th>
+                    <th>Host</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for website in website_list %}
+                <tr>
+                    <td><a target="_blank" href="http://{{ website.fqdn }}">{{ website.fqdn }}</a></td>
+                    <td><a href="{% url 'inventory:load_host_details' website.web_host.id %}">{{ website.web_host }}</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p id="no-results">No members were found in inventory.</p>
+    {% endif %}
+{% endblock %}

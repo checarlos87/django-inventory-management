@@ -1,0 +1,56 @@
+{% extends "inventory/base_detail.html" %}
+
+{% block subtitle %} | Details | {{ vmhost.name }}{% endblock %}
+{% block host-name %}{{ vmhost.name }}{% endblock %}
+
+{% block details %}
+    <div id="detail-descript">
+        <h3>Description</h3>
+        <p class="table-descript">
+            {{ vmhost.description }}
+        </p>
+    </div>
+    {% if vmhost.services.all %}
+    <div class="detail-ul">
+        <h3>Services</h3>
+        <ul>
+             {% for service in vmhost.services.all %}
+             <li>{{ service }}</li>
+             {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    <div class="detail-ul">
+        <h3>Bacula-FD</h3>
+        <ul>
+            <li class="bool-{{ vmhost.is_bacula_fd|lower }}">{{ vmhost.is_bacula_fd }}</li>
+        </ul>
+    </div>
+    <div class="detail-ul">
+        <h3>Ansible</h3>
+        <ul>
+            <li class="bool-{{ vmhost.is_ansible_managed|lower }}">{{ vmhost.is_ansible_managed }}</li>
+        </ul>
+    </div>
+    <table class="results">
+        <thead>
+            <tr>
+                <th colspan="2">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Public IP:</strong></td> 
+                <td>{{ vmhost.get_netiface_ip }}</td>
+            </tr>
+            <tr>
+                <td><strong>OS:</strong></td> 
+                <td>{{ vmhost.os }}</td>
+            </tr>
+            <tr>
+                <td><strong>Host Machine:</strong></td> 
+                <td>{{ vmhost.host_machine }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

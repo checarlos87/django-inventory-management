@@ -1,0 +1,13 @@
+{% extends "inventory/base.html" %}
+{% load staticfiles %}
+
+{% block head-block %}
+    <link rel="stylesheet" type="text/css" href="{% static 'inventory/detail_style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'inventory/results_style.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <h1 id="page-title">{% block host-name %}{% endblock %}</h1>
+    {% block details %}
+    {% endblock %}
+{% endblock %}

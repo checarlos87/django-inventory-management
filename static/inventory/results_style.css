@@ -1,0 +1,64 @@
+/* === Table Styles === */
+
+/* == Pre-table stats == */
+
+#stats {
+/*    border: 1px solid black;*/
+    list-style: none;
+    padding: 0;
+}
+
+#stats li {
+    font-size: .9em;
+    padding: 0 0 6px 0;
+}
+
+.table-descript {
+    font-size: 1em;
+    line-height: 150%;
+}
+
+/* == The actual table == */
+
+.results {
+    border-bottom: 1px solid #33ab63;
+    border-collapse: collapse;
+    margin: 0 auto;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.results thead {
+    background-color: #33ab63;
+}
+
+th {
+    color: white;
+}
+
+td, th {
+    padding: 10px 0 10px 20px;
+/*    text-align: center;*/
+    text-align: left;
+}
+
+.bool-false {
+    color: red;
+}
+
+.bool-true {
+    color: green;
+}
+
+tr:nth-child(even) {
+    background-color: #f3f3f3;
+}
+
+/* == If no table is rendered == */
+
+#no-results {
+    font-size: .8em;
+    margin-top: 30px;
+    text-align: center;
+}
+

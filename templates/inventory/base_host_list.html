@@ -1,0 +1,39 @@
+{% extends "inventory/base.html" %}
+{% load staticfiles %}
+
+{% block head-block %}
+    <link rel="stylesheet" type="text/css" href={% static 'inventory/results_style.css' %} />
+{% endblock %}
+
+{% block content %}
+    <h2 id="page-title">{% block table-name %}{% endblock %}</h2>
+    {% if host_list %}
+        {% block table-stats %}{% endblock %}
+        <table class="results">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    {% block property-num-th %}<th>Prop num</th>{% endblock %}
+                    <th>Public IP</th>
+                    {% block extra-th %}{% endblock %}
+                    <th>Bacula-FD</th>
+                    <th>Ansible</th>            
+                </tr>
+            </thead>
+            <tbody>
+            {% for host in host_list %}
+                <tr>
+                    <td><a href="{% url 'inventory:load_host_details' host.id  %}">{{ host.name }}</a></td>
+                    {% block property-num-td %}<td>{{ host.property_num }}</td>{% endblock %}
+                    <td>{{ host.get_netiface_ip }}</td>
+                    {% block extra-td %}{% endblock %}
+                    <td class="bool-{{ host.is_bacula_fd|lower }}">{{ host.is_bacula_fd }}</td>
+                    <td class="bool-{{ host.is_ansible_managed|lower }}">{{ host.is_ansible_managed }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p id="no-results">No hosts were found in inventory.</p>
+    {% endif %}
+{% endblock %}

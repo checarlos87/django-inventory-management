@@ -1,0 +1,76 @@
+/*=== Body Styles ===*/
+
+body {
+    font: normal normal normal .93em/1em Verdana, Geneva, sans-serif;
+    margin: 0;
+}
+
+/* === Header Styles ===*/
+
+header {
+    background-color: #33ab63;
+    padding: 20px 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+#header-wrapper {
+    margin: 0 auto;
+    width: 1200px;
+}
+
+#main-nav {
+    float: right;
+}
+
+/* === Content Styles === */
+
+#content {
+    margin: 0 auto;
+    min-height: 650px;
+    width: 1200px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a#home-link{
+    color: white;
+    font-size: 1.2em;
+}
+
+#page-title {
+    padding: 20px 0 10px 0;
+    text-align: left;
+}
+
+
+/* === Footer === */
+
+footer {
+    border-top: 1px dashed #33ab63;
+    margin: 100px 0 ;
+}
+
+#footer-left{
+    margin: 0 auto;
+}
+
+#troglodiv{
+    float: right;
+    line-height: 120%;
+    margin: 35px 35px 0 0;
+    text-align: center;
+}
+
+#trogloimg {
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+
+
+
