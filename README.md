@@ -27,6 +27,14 @@ python manage.py makemigrations inventory
 python manage.py migrate
 ```
 
+Add to your project's urls.py a url that points to the app.  For example:
+```
+urlpatterns = [
+    ...
+    url(r'^inventory/', include('inventory.urls')),
+]
+```
+
 (optional) If you're going to run the code in production (not in Django's development server), you'll want to make sure you've created a static/ directory to hold static files (stylesheets, in the case of this app) and then you'll want to collect those static files into the static/ directory using manage.py.
 ```
 python manage.py collectstatic
