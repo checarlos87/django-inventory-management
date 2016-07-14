@@ -1,5 +1,5 @@
 # Django Inventory Management
-A deliberately simple Django app for managing inventory at an IT enterprise. This app produces straight-forward HTML with very simple CSS.  It is meant to be plugged in to Django's admin or similar backend database management app.
+A deliberately simple Django app for managing inventory at an IT enterprise. This app produces straightforward HTML with very simple CSS.  It is meant to be plugged in to Django's admin or a similar backend database management app.
 
 ## Installing
 Clone the repo into a Django project.
