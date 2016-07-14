@@ -47,7 +47,7 @@ The model defines a base Equipment class from which many other classes inherit, 
 
 The model also provides an abstract class CloudMember which is meant to be used to group hosts together in "clouds".  An example subclass BaculaCloudMember (for keeping record of hosts in a Bacula infrastructure cloud) is provided. 
 
-The rest of the classes are small and closely bound to the Equipment classes.  The Netiface class deserves special explanation.  It is a table for holding data about a host's public network interface.  Since it is so closely bound to the Host table, Netiface would be thought of as a weak entity in a database ER diagram.  The current model only uses one Netiface per host, but the way it is implemented allows for associating more than one Netiface relation with a single host.
+The rest of the classes are small and closely bound to the Equipment classes.  The Netiface class deserves special explanation.  It is a table for holding data about a host's public network interface.  Since it is so closely bound to the Host table, Netiface would be thought of as a weak entity in a database ER diagram.  The current model only uses one Netiface per host, but the way it is implemented allows for easily modifying the model to associate more than one Netiface with a single host.
 
 Finally, the Service class is meant to keep services that hosts may run such as ssh, apache, nginx, django, etc.
 
@@ -71,5 +71,5 @@ Here is a full listing of the model classes:
 * HostOS
 * SwitchOS
 
-## View/Templates
-The views and templates are very simple.  They provide list and detail views of various models.  You can think of them as a "read-only" version of the Django admin app.
+## Views/Templates
+The views and templates are very simple.  They provide list and detail views of most of the models.  You can think of them as a "read-only" version of the Django admin app.
